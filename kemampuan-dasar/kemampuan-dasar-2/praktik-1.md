@@ -170,3 +170,170 @@ To https://github.com/zulfadlis/praxis-academy
  * [new branch]      master -> master
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ````
+
+
+### Different User
+```sh
+agus@agus-PC MINGW64 /d
+$ git clone https://github.com/zulfadlis/praxis-academy
+Cloning into 'praxis-academy'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 6 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), 476 bytes | 17.00 KiB/s, done.
+
+agus@agus-PC MINGW64 /d
+$ git checkout -b hickory-dickory
+fatal: not a git repository (or any of the parent directories): .git
+
+agus@agus-PC MINGW64 /d
+$ git bracnh
+git: 'bracnh' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+
+agus@agus-PC MINGW64 /d
+$ git branch
+fatal: not a git repository (or any of the parent directories): .git
+
+agus@agus-PC MINGW64 /d
+$ cd praxis-academy/
+
+agus@agus-PC MINGW64 /d/praxis-academy (master)
+$ git checkout -b hickory-dickory
+Switched to a new branch 'hickory-dickory'
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ wget https://www.acquia.com/sites/default/files/blog/hickory-dickory-dock.txt
+--2020-08-15 14:21:29--  https://www.acquia.com/sites/default/files/blog/hickory-dickory-dock.txt
+Resolving www.acquia.com (www.acquia.com)... 104.16.117.45, 104.16.118.45
+Connecting to www.acquia.com (www.acquia.com)|104.16.117.45|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2020-08-15 14:21:32 ERROR 404: Not Found.
+```
+
+### Kembali ke user awal
+````sh
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git remote rename origin zulfadli
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git remote
+bob
+zulfadli
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git remote -v
+bob     https://github.com/bryanhirsch/rhymes.git (fetch)
+bob     https://github.com/bryanhirsch/rhymes.git (push)
+zulfadli        https://github.com/zulfadlis/praxis-academy (fetch)
+zulfadli        https://github.com/zulfadlis/praxis-academy (push)
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git fetch bob
+warning: no common commits
+remote: Enumerating objects: 23, done.
+remote: Total 23 (delta 0), reused 0 (delta 0), pack-reused 23
+Unpacking objects: 100% (23/23), 2.81 KiB | 32.00 KiB/s, done.
+From https://github.com/bryanhirsch/rhymes
+ * [new branch]      master     -> bob/master
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git branch -a
+* master
+  remotes/bob/master
+  remotes/zulfadli/master
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git log -1 -p
+commit 1706d2fc77fb98f22bdda417c2acca94160702f4 (HEAD -> master, zulfadli/master)
+Author: zulfadli <ipay48@gmail.com>
+Date:   Sat Aug 15 06:50:27 2020 +0100
+
+    Added project overview to README.txt
+
+diff --git a/README.txt b/README.txt
+index e69de29..c83e022 100644
+--- a/README.txt
++++ b/README.txt
+@@ -0,0 +1 @@
++This repo is a collection of my favorite nursery rhymes.
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git checkout master
+Already on 'master'
+Your branch is up to date with 'zulfadli/master'.
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git merge hickory-dickory
+merge: hickory-dickory - not something we can merge
+
+agus@agus-PC /cygdrive/d/fadli/praxis-academy/kemampuan-dasar/kemampuan-dasar-2/rhymes
+$ git branch -D hickory-dickory
+error: branch 'hickory-dickory' not found.
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote
+bobo
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote -v
+bobo    https://github.com/zulfadlis/praxis-academy (fetch)
+bobo    https://github.com/zulfadlis/praxis-academy (push)
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote rm bobo
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote rename origin bob
+fatal: No such remote: 'origin'
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote add zulfadli https://github.com/zulfadlis/praxis-academy
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote
+zulfadli
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote -v
+zulfadli        https://github.com/zulfadlis/praxis-academy (fetch)
+zulfadli        https://github.com/zulfadlis/praxis-academy (push)
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git remote update
+Fetching zulfadli
+From https://github.com/zulfadlis/praxis-academy
+ * [new branch]      master     -> zulfadli/master
+
+agus@agus-PC MINGW64 /d/praxis-academy (hickory-dickory)
+$ git checkout master
+Switched to branch 'master'
+
+agus@agus-PC MINGW64 /d/praxis-academy (master)
+$ git merge zulfadli/master
+Already up to date.
+
+agus@agus-PC MINGW64 /d/praxis-academy (master)
+$ git diff zulfadli/master
+
+agus@agus-PC MINGW64 /d/praxis-academy (master)
+$ git push bob master
+fatal: 'bob' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+agus@agus-PC MINGW64 /d/praxis-academy (master)
+$ git checkout -b bobs-changes
+Switched to a new branch 'bobs-changes'
+
+agus@agus-PC MINGW64 /d/praxis-academy (bobs-changes)
+$ git log --oneline
+1706d2f (HEAD -> bobs-changes, zulfadli/master, master, hickory-dickory) Added project overview to README.txt
+c46dd75 first commit.
+
+````
