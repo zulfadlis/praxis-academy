@@ -5,7 +5,8 @@ celciusToFahrenheit = (celciusToF) => {
 
 fahrenheitToCelsius = (fahrenheitToC) => {
   let fahrenheit = ((fahrenheitToC - 32) * 5) / 9;
-  console.log(`${fahrenheitToC} °F is ${fahrenheit} °C`);
+  let result = Math.round(fahrenheit);
+  console.log(`${fahrenheitToC} °F is ${result} °C `);
 };
 
 celciusToFahrenheit(2);
