@@ -10,4 +10,4 @@ fahrenheitToCelsius = (fahrenheitToC) => {
 };
 
 celciusToFahrenheit(2);
-fahrenheitToCelsius(35.6);
+fahrenheitToCelsius(35);
